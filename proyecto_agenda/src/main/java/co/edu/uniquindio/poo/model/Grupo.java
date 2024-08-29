@@ -4,10 +4,6 @@ import java.util.Arrays;
 
 public class Grupo {
 
-    public enum Categoria {
-        OFICINA, FIESTA, AMIGOS, FAMILIA
-    }
-
     private String nombre;
     private Categoria categoria;
     private Contacto[] contactos;
