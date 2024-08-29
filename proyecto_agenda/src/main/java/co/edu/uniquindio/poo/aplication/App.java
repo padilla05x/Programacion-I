@@ -22,7 +22,7 @@ public class App {
         JOptionPane.showMessageDialog(null, "Contacto 3: " + contacto3);
 
         // Crear un grupo
-        Grupo grupoAmigos = new Grupo("Amigos", Categoria.AMIGOS);
+        Grupo grupoAmigos = new Grupo("Amigos Cercanos", Categoria.AMIGOS);
         System.out.println(grupoAmigos.agregarContacto(contacto1));
         System.out.println(grupoAmigos.agregarContacto(contacto2));
         System.out.println(grupoAmigos.agregarContacto(contacto3));

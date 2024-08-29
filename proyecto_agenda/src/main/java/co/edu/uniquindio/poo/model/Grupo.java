@@ -73,10 +73,6 @@ public class Grupo {
 
     @Override
     public String toString() {
-        return "Grupo{" +
-                "nombre='" + nombre + '\'' +
-                ", categoria=" + categoria +
-                ", contactos=" + Arrays.toString(contactos) +
-                '}';
+        return nombre + ", Categoria: " + categoria +"\nContactos=" + Arrays.toString(contactos);
     }
 }

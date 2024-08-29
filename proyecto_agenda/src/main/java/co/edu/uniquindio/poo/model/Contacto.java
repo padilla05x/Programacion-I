@@ -80,7 +80,7 @@ public class Contacto {
     // Metodo para devolver toda la info en una cadena de texto
     @Override
     public String toString() {
-        return "Contacto [nombre=" + nombre + ", alias=" + alias + ", direccion=" + direccion + ", telefono=" + telefono + ", email=" + email + "]";
+        return "\nnombre: " + nombre + ", alias: " + alias + ", direccion: " + direccion + ", telefono: " + telefono + ", email: " + email;
     }
 
     

@@ -68,12 +68,7 @@ public class Reunión {
 
     @Override
     public String toString() {
-        return "Reunión{" +
-                "descripcion='" + descripcion + '\'' +
-                ", fecha=" + fecha +
-                ", hora='" + hora + '\'' +
-                ", listaContactosAsistentes=" + listaContactosAsistentes +
-                '}';
+        return "descripcion: " + descripcion +", fecha: " + fecha +", hora: " + hora +", Contactos asistentes: " + listaContactosAsistentes +'}';
     }
 }
 
