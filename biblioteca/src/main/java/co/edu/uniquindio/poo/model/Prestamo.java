@@ -1,45 +1,80 @@
 package co.edu.uniquindio.poo.model;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.LinkedList;
 
 public class Prestamo {
-    private Double costo;
-    private Date fechaEntrega;
-    private Date fechaPrestamo;
+    private LocalDate fechaPrestamo;
+    private LocalDate fechaEntrega;
+    private double costoPorDia;
+    private LinkedList<DetallePrestamo> Detallesprestamos;
 
-    public Prestamo(Double costo, Date fechaEntrega, Date fechaPrestamo){
-        this.costo = costo;
-        this.fechaEntrega = fechaEntrega;
+
+    /**
+    * Constructor
+    */
+    public Prestamo(LocalDate fechaPrestamo, LocalDate fechaEntrega, double costoPorDia, Estudiante estudiante, Bibliotecario bibliotecario) {
         this.fechaPrestamo = fechaPrestamo;
-    }
-
-    public Double getCosto() {
-        return costo;
-    }
-
-    public void setCosto(Double costo) {
-        this.costo = costo;
-    }
-
-    public Date getFechaEntrega() {
-        return fechaEntrega;
-    }
-
-    public void setFechaEntrega(Date fechaEntrega) {
         this.fechaEntrega = fechaEntrega;
+        this.costoPorDia = costoPorDia;
+        Detallesprestamos = new LinkedList<>();
     }
 
-    public Date getFechaPrestamo() {
+    /**
+     * Getters y Setters
+     */
+    public LocalDate getFechaPrestamo() {
         return fechaPrestamo;
     }
 
-    public void setFechaPrestamo(Date fechaPrestamo) {
+    public void setFechaPrestamo(LocalDate fechaPrestamo) {
         this.fechaPrestamo = fechaPrestamo;
     }
 
-    @Override
-    public String toString() {
-        return "Prestamo [costo=" + costo + ", fechaEntrega=" + fechaEntrega + ", fechaPrestamo=" + fechaPrestamo + "]";
+    public LocalDate getFechaEntrega() {
+        return fechaEntrega;
+    }
+
+    public void setFechaEntrega(LocalDate fechaEntrega) {
+        this.fechaEntrega = fechaEntrega;
+    }
+
+    public double getCostoPorDia() {
+        return costoPorDia;
+    }
+
+    public void setCostoPorDia(double costoPorDia) {
+        this.costoPorDia = costoPorDia;
+    }
+
+    public LinkedList<DetallePrestamo> getDetallesprestamos() {
+        return Detallesprestamos;
+    }
+
+    public void setDetallesprestamos(LinkedList<DetallePrestamo> Detallesprestamos) {
+        this.Detallesprestamos = Detallesprestamos;
+    }
+
+    /**
+     * Metodo que calcula los dias que el libro fue prestado
+     */
+    public long calcularDiasPrestamo() {
+        long diasPrestamo = java.time.Duration.between(fechaPrestamo.atStartOfDay(), fechaEntrega.atStartOfDay()).toDays();
+        return diasPrestamo;
+    }
+
+    /**
+     * Metodod que calcula el costo total
+     */
+    public double calcularCostoTotal() {
+        return calcularDiasPrestamo() * costoPorDia;
+    }
+
+    /**
+     * Metodo que vincula los DetallesPrestamo a un Prestamo
+     */
+    public void agregarDetallesPrestamos(DetallePrestamo detallePrestamo) {
+        getDetallesprestamos().add(detallePrestamo);
     }
 
 }

@@ -6,6 +6,9 @@ public class Persona {
     private String telefono;
     private String correo;
 
+    /**
+    * Constructor
+    */
     public Persona(String nombre, String cedula, String telefono, String correo) {
         this.nombre = nombre;
         this.cedula = cedula;
@@ -13,8 +16,11 @@ public class Persona {
         this.correo = correo;
     }
 
+    /**
+     * Getters y Setters
+     */
     public String getNombre() {
-        return nombre;
+            return nombre;
     }
 
     public void setNombre(String nombre) {
@@ -44,10 +50,4 @@ public class Persona {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-
-    @Override
-    public String toString() {
-        return "Persona [nombre=" + nombre + ", cedula=" + cedula + ", telefono=" + telefono + ", correo=" + correo + "]";
-    }
-
 }

@@ -1,24 +1,38 @@
 package co.edu.uniquindio.poo.model;
 
+import java.time.LocalDate;
+import java.util.Collection;
+import java.util.LinkedList;
+
 public class Libro {
     private String titulo;
     private String codigo;
     private String isbn;
     private String autor;
     private String editorial;
-    private String fecha;
-    private Byte disponibilidad;
+    private LocalDate fechaDePublicacion;
+    private int stock;
+    private EstadoPrestamo estado;
+    private Collection<DetallePrestamo> historialPrestamos;
 
-    public Libro(String titulo, String codigo, String isbn, String autor, String editorial, String fecha, byte disponibilidad){
+    /**
+    * Constructor
+    */
+    public Libro(String titulo, String codigo, String isbn, String autor, String editorial, LocalDate fechaDePublicacion, int stock, EstadoPrestamo estado) {
         this.titulo = titulo;
         this.codigo = codigo;
         this.isbn = isbn;
         this.autor = autor;
         this.editorial = editorial;
-        this.fecha = fecha;
-        this.disponibilidad = disponibilidad;
+        this.fechaDePublicacion = fechaDePublicacion;
+        this.stock = stock;
+        this.estado = estado;
+        historialPrestamos = new LinkedList<>();
     }
 
+    /**
+     * Metodos getters y setters
+     */
     public String getTitulo() {
         return titulo;
     }
@@ -59,26 +73,44 @@ public class Libro {
         this.editorial = editorial;
     }
 
-    public String getFecha() {
-        return fecha;
+    public LocalDate getFechaDePublicacion() {
+        return fechaDePublicacion;
     }
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
+    public void setFechaDePublicacion(LocalDate fechaDePublicacion) {
+        this.fechaDePublicacion = fechaDePublicacion;
     }
 
-    public byte getDisponibilidad() {
-        return disponibilidad;
+    public int getStock() {
+        return stock;
     }
 
-    public void setDisponibilidad(byte disponibilidad) {
-        this.disponibilidad = disponibilidad;
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
+    public EstadoPrestamo getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadoPrestamo estado) {
+        this.estado = estado;
+    }
+
+    public Collection<DetallePrestamo> getDetallesprestamos() {
+        return historialPrestamos;
+    }
+
+    public void setDetallesprestamos(Collection<DetallePrestamo> historialPrestamos) {
+        this.historialPrestamos = historialPrestamos;
+    }
+
+    /**
+     * Metodo toString
+     */
     @Override
     public String toString() {
-        return "Libro [titulo=" + titulo + ", codigo=" + codigo + ", isbn=" + isbn + ", autor=" + autor + ", editorial=" + editorial + ", fecha=" + fecha + ", disponibilidad=" + disponibilidad + "]";
+        return "Libro [titulo=" + titulo + ", codigo=" + codigo + ", isbn=" + isbn + ", autor=" + autor + ", editorial="
+                + editorial + ", fechaDePublicacion=" + fechaDePublicacion + ", stock=" + stock + "]";
     }
-
-    
 }
