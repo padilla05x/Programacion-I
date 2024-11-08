@@ -68,7 +68,7 @@ public class App extends Application {
     //servicios
     
     public void inicializarData(){
-        Vehiculo vehiculo = new Vehiculo("JHT468", "Nissan", "Frontier", "Camioneta");
+        Vehiculo vehiculo = new Vehiculo("ABC123", "Ford", "Fiesta", "Auto", 7000, 5);
         empresa.agregarVehiculo(vehiculo);
     }
     

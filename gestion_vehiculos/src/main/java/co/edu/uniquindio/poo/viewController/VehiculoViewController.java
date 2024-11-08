@@ -1,8 +1,5 @@
 package co.edu.uniquindio.poo.viewController;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import co.edu.uniquindio.poo.App;
 import co.edu.uniquindio.poo.controller.VehiculoController;
 import co.edu.uniquindio.poo.model.Vehiculo;
@@ -10,7 +7,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -23,49 +19,17 @@ public class VehiculoViewController {
     private Vehiculo selectedVehiculo;
 
     @FXML
-    private ResourceBundle resources;
-
+    private TextField txtMarca, txtMatricula, txtModelo, txtTarifa, txtHoras;
     @FXML
-    private URL location;
-
-    @FXML
-    private TextField txtMarca;
-
-    @FXML
-    private Button btnLimpiar;
-
+    private ComboBox<String> cmbTipo;
     @FXML
     private TableView<Vehiculo> tblListVehiculo;
-
     @FXML
-    private Button btnEliminar;
-
+    private TableColumn<Vehiculo, String> tbcMatricula, tbcMarca, tbcModelo, tbcTipo;
     @FXML
-    private Button btnActualizarVehiculo;
+    private TableColumn<Vehiculo, String> tbcTotal;
 
-    @FXML
-    private TableColumn<Vehiculo, String> tbcMarca;
-
-    @FXML
-    private TextField txtModelo;
-
-    @FXML
-    private TableColumn<Vehiculo, String> tbcModelo;
-
-    @FXML
-    private Button btbAgregarVehiculo;
-
-    @FXML
-    private TableColumn<Vehiculo, String> tbcMatricula;
-
-    @FXML
-    private TextField txtMatricula;
-
-    @FXML
-    private TableColumn<Vehiculo, String> tbcTipo;
-
-    @FXML
-    private ComboBox<String> cmbTipo; // ComboBox para seleccionar el tipo de vehículo
+     
 
     @FXML
     void onAgregarVehiculo() {
@@ -115,7 +79,10 @@ public class VehiculoViewController {
         tbcMatricula.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMatricula()));
         tbcMarca.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMarca()));
         tbcModelo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getModelo()));
-        tbcTipo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTipo())); // Nuevo binding para tipo
+        tbcTipo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTipo()));
+        tbcTotal.setCellValueFactory(cellData -> 
+            new SimpleStringProperty(String.valueOf(cellData.getValue().calcularTotal()))
+        );
     }
 
     private void obtenerVehiculos() {
@@ -151,7 +118,9 @@ public class VehiculoViewController {
             txtMatricula.getText(),
             txtMarca.getText(),
             txtModelo.getText(),
-            cmbTipo.getValue()
+            cmbTipo.getValue(),
+            Double.parseDouble(txtTarifa.getText()),
+            Integer.parseInt(txtHoras.getText())
         );
     }
 
@@ -188,6 +157,8 @@ public class VehiculoViewController {
         txtMarca.clear();
         txtModelo.clear();
         cmbTipo.getSelectionModel().clearSelection();
+        txtTarifa.clear();
+        txtHoras.clear();
     }
 
 
